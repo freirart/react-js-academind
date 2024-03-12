@@ -1,5 +1,5 @@
-export const X_PLAY = "X";
-export const O_PLAY = "O";
+export const X_PLAY = 'X';
+export const O_PLAY = 'O';
 
 export interface SignProps {
   invisible?: boolean;
@@ -11,6 +11,14 @@ export interface PlayerTurn {
   y: number;
 }
 
+interface PlayerInfo {
+  score: number;
+  name: string;
+  winner: undefined | null | true;
+}
+
+export type PlayerMap = Record<string, PlayerInfo>;
+
 export const deepCopy = (val: any) => JSON.parse(JSON.stringify(val));
 
 export const winningCombinations = [
@@ -18,43 +26,43 @@ export const winningCombinations = [
   [
     { x: 0, y: 0 },
     { x: 0, y: 1 },
-    { x: 0, y: 2 },
+    { x: 0, y: 2 }
   ],
   [
     { x: 1, y: 0 },
     { x: 1, y: 1 },
-    { x: 1, y: 2 },
+    { x: 1, y: 2 }
   ],
   [
     { x: 2, y: 0 },
     { x: 2, y: 1 },
-    { x: 2, y: 2 },
+    { x: 2, y: 2 }
   ],
   // wins on vertical line
   [
     { x: 0, y: 0 },
     { x: 1, y: 0 },
-    { x: 2, y: 0 },
+    { x: 2, y: 0 }
   ],
   [
     { x: 0, y: 1 },
     { x: 1, y: 1 },
-    { x: 2, y: 1 },
+    { x: 2, y: 1 }
   ],
   [
     { x: 0, y: 2 },
     { x: 1, y: 2 },
-    { x: 2, y: 2 },
+    { x: 2, y: 2 }
   ],
   // wins on diagonal
   [
     { x: 0, y: 0 },
     { x: 1, y: 1 },
-    { x: 2, y: 2 },
+    { x: 2, y: 2 }
   ],
   [
     { x: 0, y: 2 },
     { x: 1, y: 1 },
-    { x: 2, y: 0 },
-  ],
+    { x: 2, y: 0 }
+  ]
 ];

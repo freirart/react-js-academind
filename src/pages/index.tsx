@@ -2,23 +2,23 @@ import { useEffect, useState } from 'react';
 import Board from '@/components/Board';
 import {
   O_PLAY,
+  PlayerMap,
   PlayerTurn,
   X_PLAY,
+  deepCopy,
   winningCombinations
 } from '@/utils/helper';
 import Result from '@/components/Result';
+import Header from '@/components/Header';
 
 export default function TicTacToe() {
   const [playHistory, setPlayHistory] = useState<Array<PlayerTurn>>(
     []
   );
-  const [score, setScore] = useState<Record<string, number>>({
-    [O_PLAY]: 0,
-    [X_PLAY]: 0
+  const [playersInfo, setPlayersInfo] = useState<PlayerMap>({
+    [O_PLAY]: { score: 0, name: 'Player 1', winner: undefined },
+    [X_PLAY]: { score: 0, name: 'Player 2', winner: undefined }
   });
-  const [winner, setWinner] = useState<undefined | null | string>(
-    undefined
-  );
 
   const handleClickCbFn = (x: number, y: number) => {
     setPlayHistory((prevPlayHistory) => {
@@ -55,33 +55,48 @@ export default function TicTacToe() {
 
         if (matches.length === combination.length) {
           hasResult = true;
-          setWinner(lastPlayer);
-          setScore((prevScore) => ({
-            ...prevScore,
-            [lastPlayer]: prevScore[lastPlayer] + 1
-          }));
+          setPlayersInfo((prevPlayersInfo) => {
+            const newPlayersInfo = deepCopy(prevPlayersInfo);
+            newPlayersInfo[lastPlayer].score += 1;
+            newPlayersInfo[lastPlayer].winner = true;
+
+            return newPlayersInfo;
+          });
           break;
         }
       }
 
       if (!hasResult && playHistory.length === 9) {
-        setWinner(null);
+        setPlayersInfo((prevPlayersInfo) =>
+          resetWinnerState(prevPlayersInfo, null)
+        );
       }
     }
   }, [playHistory]);
 
+  const resetWinnerState = (
+    prevPlayersInfo: PlayerMap,
+    val?: null
+  ) => {
+    const newPlayersInfo: PlayerMap = deepCopy(prevPlayersInfo);
+
+    for (const playerId in newPlayersInfo) {
+      newPlayersInfo[playerId].winner = val;
+    }
+
+    return newPlayersInfo;
+  };
+
   const restartCbFn = () => {
     setPlayHistory([]);
-    setWinner(undefined);
+    setPlayersInfo(resetWinnerState);
   };
 
   return (
     <>
-      <Result winner={winner} restartCbFn={restartCbFn} />
+      <Result playersInfo={playersInfo} restartCbFn={restartCbFn} />
       <div className="relative z-0 h-screen bg-light-blue overflow-hidden">
-        <header className="flex h-1/5 mx-auto w-3/5">
-          <div className="mx-auto self-end">Header</div>
-        </header>
+        <Header />
         <Board
           playHistory={playHistory}
           handleClickCbFn={handleClickCbFn}

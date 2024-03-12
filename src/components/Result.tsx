@@ -1,21 +1,31 @@
-import { MouseEventHandler } from "react";
+import { PlayerMap } from '@/utils/helper';
+import { MouseEventHandler } from 'react';
 
 interface ResultProps {
-  winner: string | null | undefined;
+  playersInfo: PlayerMap;
   restartCbFn: MouseEventHandler;
 }
 
-export default function Result({ winner, restartCbFn }: ResultProps) {
-  const visible = winner !== undefined;
+export default function Result({
+  playersInfo,
+  restartCbFn
+}: ResultProps) {
+  const players = Object.values(playersInfo);
 
-  if (visible) {
+  const playerToShow = players.find(
+    (player) => player.winner !== undefined
+  );
+
+  if (playerToShow) {
     return (
       <div
         className="fixed z-10 bg-special-black/95 h-screen w-screen flex items-center
           justify-center flex-col"
       >
         <p className="text-white-blue text-4xl font-bold">
-          {winner !== null ? `"${winner}" VENCEU!` : "EMPATE!"}
+          {playerToShow.winner !== null
+            ? `"${playerToShow.name}" VENCEU!`
+            : 'EMPATE!'}
         </p>
         <button
           onClick={restartCbFn}
