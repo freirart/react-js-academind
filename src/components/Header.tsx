@@ -5,11 +5,13 @@ import TextInput from './TextInput';
 interface HeaderProps {
   playersInfo: PlayerMap;
   setPlayerName: Function;
+  currentPlayer: string;
 }
 
 export default function Header({
   playersInfo,
-  setPlayerName
+  setPlayerName,
+  currentPlayer
 }: HeaderProps) {
   const [playerBeingEdited, setPlayerBeingEdited] =
     useState<string>();
@@ -42,12 +44,15 @@ export default function Header({
         {Object.entries(playersInfo).map(
           ([playerId, { name, score }]) => {
             const isEditingPlayer = playerBeingEdited == playerId;
+            const isCurrentPlayer = currentPlayer === playerId;
 
             return (
               <div
                 key={playerId}
-                className="flex justify-between items-center p-2 w-[14.75rem] rounded-3xl
-                  bg-light-blue text-special-black font-medium"
+                className={`flex justify-between items-center p-2 w-[14.75rem] rounded-3xl
+                bg-light-blue text-special-black font-medium${
+                  isCurrentPlayer ? ' rainbow-border' : ''
+                }`}
               >
                 {signMap[playerId]}
                 {isEditingPlayer ? (
