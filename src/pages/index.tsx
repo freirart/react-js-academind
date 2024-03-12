@@ -92,11 +92,23 @@ export default function TicTacToe() {
     setPlayersInfo(resetWinnerState);
   };
 
+  const setPlayerName = (playerId: string, newName: string) => {
+    setPlayersInfo((prevPlayersInfo) => {
+      const newPlayersInfo: PlayerMap = deepCopy(prevPlayersInfo);
+      newPlayersInfo[playerId].name = newName;
+
+      return newPlayersInfo;
+    });
+  };
+
   return (
     <>
       <Result playersInfo={playersInfo} restartCbFn={restartCbFn} />
       <div className="relative z-0 h-screen bg-light-blue overflow-hidden">
-        <Header playersInfo={playersInfo} />
+        <Header
+          playersInfo={playersInfo}
+          setPlayerName={setPlayerName}
+        />
         <Board
           playHistory={playHistory}
           handleClickCbFn={handleClickCbFn}

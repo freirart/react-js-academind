@@ -1,14 +1,18 @@
 import { O_PLAY, PlayerMap, X_PLAY } from '@/utils/helper';
 import { useState } from 'react';
+import TextInput from './TextInput';
+
+interface HeaderProps {
+  playersInfo: PlayerMap;
+  setPlayerName: Function;
+}
 
 export default function Header({
-  playersInfo
-}: {
-  playersInfo: PlayerMap;
-}) {
-  const [playerBeingEdited, setPlayerBeingEdited] = useState<
-    string | undefined
-  >(undefined);
+  playersInfo,
+  setPlayerName
+}: HeaderProps) {
+  const [playerBeingEdited, setPlayerBeingEdited] =
+    useState<string>();
 
   const signMap: Record<string, React.JSX.Element> = {
     [O_PLAY]: (
@@ -22,7 +26,12 @@ export default function Header({
     )
   };
 
-  const onBlur = () => setPlayerBeingEdited(undefined);
+  const onBlur = (newPlayerName?: string) => {
+    if (newPlayerName !== undefined) {
+      setPlayerName(playerBeingEdited, newPlayerName);
+    }
+    setPlayerBeingEdited(undefined);
+  };
 
   return (
     <header className="flex justify-center h-1/5">
@@ -42,19 +51,11 @@ export default function Header({
               >
                 {signMap[playerId]}
                 {isEditingPlayer ? (
-                  <input
-                    autoFocus
-                    onBlur={onBlur}
-                    onKeyDown={({ key }) => {
-                      ['Enter', 'Tab'].includes(key) ? onBlur() : {};
-                    }}
-                    type="text"
-                    className="w-36 text-center bg-light-blue"
-                  />
+                  <TextInput defaultValue={name} onBlur={onBlur} />
                 ) : (
                   <span
                     onClick={() => setPlayerBeingEdited(playerId)}
-                    onBlur={onBlur}
+                    onBlur={() => onBlur()}
                     className="cursor-pointer"
                   >
                     {name}
