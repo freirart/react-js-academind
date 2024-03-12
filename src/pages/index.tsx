@@ -16,17 +16,17 @@ export default function TicTacToe() {
     []
   );
   const [playersInfo, setPlayersInfo] = useState<PlayerMap>({
-    [O_PLAY]: { score: 0, name: 'Player 1', winner: undefined },
-    [X_PLAY]: { score: 0, name: 'Player 2', winner: undefined }
+    [X_PLAY]: { score: 0, name: 'Player 1', winner: undefined },
+    [O_PLAY]: { score: 0, name: 'Player 2', winner: undefined }
   });
 
   const handleClickCbFn = (x: number, y: number) => {
     setPlayHistory((prevPlayHistory) => {
       const currentPlayer =
         !prevPlayHistory.length ||
-        prevPlayHistory[0].player === X_PLAY
-          ? O_PLAY
-          : X_PLAY;
+        prevPlayHistory[0].player === O_PLAY
+          ? X_PLAY
+          : O_PLAY;
 
       return [{ x, y, player: currentPlayer }, ...prevPlayHistory];
     });
@@ -96,7 +96,7 @@ export default function TicTacToe() {
     <>
       <Result playersInfo={playersInfo} restartCbFn={restartCbFn} />
       <div className="relative z-0 h-screen bg-light-blue overflow-hidden">
-        <Header />
+        <Header playersInfo={playersInfo} />
         <Board
           playHistory={playHistory}
           handleClickCbFn={handleClickCbFn}
