@@ -34,35 +34,37 @@ export default function TicTacToe() {
 
   useEffect(() => {
     if (playHistory.length >= 4) {
-      if (playHistory.length <= 8) {
-        const lastPlayer = playHistory[0].player;
-        const plays = playHistory.filter(
-          (p) => p.player === lastPlayer
-        );
+      let hasResult = false;
+      const lastPlayer = playHistory[0].player;
+      const plays = playHistory.filter(
+        (p) => p.player === lastPlayer
+      );
 
-        for (const combination of winningCombinations) {
-          const matches = [];
+      for (const combination of winningCombinations) {
+        const matches = [];
 
-          for (const { x, y } of combination) {
-            for (const play of plays) {
-              const { x: xPlayed, y: yPlayed } = play;
+        for (const { x, y } of combination) {
+          for (const play of plays) {
+            const { x: xPlayed, y: yPlayed } = play;
 
-              if (x === xPlayed && y === yPlayed) {
-                matches.push(play);
-              }
+            if (x === xPlayed && y === yPlayed) {
+              matches.push(play);
             }
           }
-
-          if (matches.length === combination.length) {
-            setWinner(lastPlayer);
-            setScore((prevScore) => ({
-              ...prevScore,
-              [lastPlayer]: prevScore[lastPlayer] + 1
-            }));
-            break;
-          }
         }
-      } else {
+
+        if (matches.length === combination.length) {
+          hasResult = true;
+          setWinner(lastPlayer);
+          setScore((prevScore) => ({
+            ...prevScore,
+            [lastPlayer]: prevScore[lastPlayer] + 1
+          }));
+          break;
+        }
+      }
+
+      if (!hasResult && playHistory.length === 9) {
         setWinner(null);
       }
     }
