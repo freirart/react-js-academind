@@ -1,4 +1,4 @@
-import { deepCopy } from "@/utils/helper";
+import { PlayerTurn, deepCopy } from "@/utils/helper";
 import PlayButton from "./PlayButton";
 
 const initialBoardState = [
@@ -8,10 +8,14 @@ const initialBoardState = [
 ];
 
 interface BoardProps {
-  playHistory?: { player: string; x: number; y: number }[];
+  playHistory?: PlayerTurn[];
+  handleClickCbFn: Function;
 }
 
-export default function Board({ playHistory = [] }: BoardProps) {
+export default function Board({
+  playHistory = [],
+  handleClickCbFn,
+}: BoardProps) {
   const updatedBoard: Array<Array<string | null>> =
     deepCopy(initialBoardState);
 
@@ -25,10 +29,15 @@ export default function Board({ playHistory = [] }: BoardProps) {
         className="flex flex-col bg-white-blue min-h-[500px] min-w-[500px] m-auto
           rounded-3xl p-10 divide-y-4 divide-light-blue/75"
       >
-        {updatedBoard.map((row) => (
+        {updatedBoard.map((row, rowIndex) => (
           <div className="flex grow flex-nowrap divide-x-4 divide-light-blue/75">
-            {row.map((col) => (
-              <PlayButton optionPlayed={col} />
+            {row.map((col, colIndex) => (
+              <PlayButton
+                x={rowIndex}
+                y={colIndex}
+                optionPlayed={col}
+                handleClickCbFn={handleClickCbFn}
+              />
             ))}
           </div>
         ))}
