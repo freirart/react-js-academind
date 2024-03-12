@@ -30,9 +30,13 @@ export default function Board({
           rounded-3xl p-10 divide-y-4 divide-light-blue/75"
       >
         {updatedBoard.map((row, rowIndex) => (
-          <div className="flex grow flex-nowrap divide-x-4 divide-light-blue/75">
+          <div
+            key={rowIndex}
+            className="flex grow flex-nowrap divide-x-4 divide-light-blue/75"
+          >
             {row.map((col, colIndex) => (
               <PlayButton
+                key={colIndex}
                 x={rowIndex}
                 y={colIndex}
                 optionPlayed={col}

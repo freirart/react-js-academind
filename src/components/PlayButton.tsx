@@ -27,7 +27,7 @@ export default function PlayButton({
       onClick={() => handleClickCbFn(x, y)}
       className="flex items-center justify-center w-full"
     >
-      {(optionPlayed != null && optionsMap[optionPlayed]) || (
+      {(optionPlayed !== null && optionsMap[optionPlayed]) || (
         <OSign invisible />
       )}
     </button>
