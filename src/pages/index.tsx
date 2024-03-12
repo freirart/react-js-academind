@@ -10,6 +10,7 @@ import {
 } from '@/utils/helper';
 import Result from '@/components/Result';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export default function TicTacToe() {
   const [playHistory, setPlayHistory] = useState<Array<PlayerTurn>>(
@@ -113,9 +114,7 @@ export default function TicTacToe() {
           playHistory={playHistory}
           handleClickCbFn={handleClickCbFn}
         />
-        <footer className="flex h-1/5 mx-auto w-3/5">
-          <div className="mx-auto">Footer</div>
-        </footer>
+        <Footer playHistory={playHistory} playersInfo={playersInfo} />
       </div>
     </>
   );
