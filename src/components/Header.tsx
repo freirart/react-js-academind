@@ -37,7 +37,7 @@ export default function Header({
     <header className="flex justify-center h-1/5">
       <div
         className="self-end flex justify-between flex-nowrap bg-white-blue min-w-[500px]
-          rounded-3xl p-2 text-xl"
+          rounded-3xl p-2 text-xl shadow-md"
       >
         {Object.entries(playersInfo).map(
           ([playerId, { name, score }]) => {
