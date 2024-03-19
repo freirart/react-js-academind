@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pt": "npx prettier . --write"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.9.0",
