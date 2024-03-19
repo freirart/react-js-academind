@@ -1,7 +1,7 @@
-import React from "react";
-import { O_PLAY, X_PLAY } from "@/utils/helper";
-import OSign from "./OSign";
-import XSign from "./XSign";
+import React from 'react';
+import { O_PLAY, X_PLAY } from '@/utils/helper';
+import OSign from './OSign';
+import XSign from './XSign';
 
 interface PlayButtonProps {
   optionPlayed: string | null;
@@ -14,18 +14,18 @@ export default function PlayButton({
   optionPlayed,
   handleClickCbFn,
   x,
-  y,
+  y
 }: PlayButtonProps) {
   const optionsMap: Record<string, React.JSX.Element> = {
     [O_PLAY]: <OSign />,
-    [X_PLAY]: <XSign />,
+    [X_PLAY]: <XSign />
   };
 
   return (
     <button
       disabled={!!optionPlayed}
       onClick={() => handleClickCbFn(x, y)}
-      className="flex items-center justify-center w-full"
+      className="flex items-center justify-center w-full hover:bg-light-blue/15"
     >
       {(optionPlayed !== null && optionsMap[optionPlayed]) || (
         <OSign invisible />

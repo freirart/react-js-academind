@@ -38,8 +38,8 @@ export default function Header({
   return (
     <header className="flex justify-center h-1/5">
       <div
-        className="self-end flex justify-between flex-nowrap bg-white-blue md:min-w-[500px]
-          rounded-3xl p-2 text-xl shadow-md"
+        className="self-end flex justify-between flex-nowrap bg-white-blue
+          md:min-w-[500px] rounded-3xl p-2 text-xl shadow-md"
       >
         {Object.entries(playersInfo).map(
           ([playerId, { name, score }]) => {
@@ -61,7 +61,7 @@ export default function Header({
                   <span
                     onClick={() => setPlayerBeingEdited(playerId)}
                     onBlur={() => onBlur()}
-                    className="cursor-pointer"
+                    className="hover:text-special-black/30"
                   >
                     {name}
                   </span>

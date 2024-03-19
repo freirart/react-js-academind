@@ -29,7 +29,8 @@ export default function Result({
         </p>
         <button
           onClick={restartCbFn}
-          className="mt-12 text-xl font-medium rounded bg-white-blue text-special-black p-3"
+          className="mt-12 text-xl font-medium rounded bg-white-blue text-special-black p-3
+            hover:bg-special-black hover:text-white-blue"
         >
           RECOMEÇAR
         </button>

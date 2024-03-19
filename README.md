@@ -3,8 +3,9 @@
 ## Anotações 🗒
 
 - importância semântica na hora do HTML
-	- listas ordenadas ou não-ordenadas?
-	- input required ou não required?
+
+  - listas ordenadas ou não-ordenadas?
+  - input required ou não required?
 
 - prop forwarding
 
@@ -17,4 +18,4 @@
 - lifting the state up => parent component managing state that is used in both siblings component
 
 - derived state = var that is set based on a prop/state
-	- derive as much as possible
+  - derive as much as possible
