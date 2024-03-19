@@ -6,13 +6,13 @@ export default function XSign({ invisible = false }: SignProps) {
     <>
       <div
         className={
-          "z-0 rounded fixed bg-special-red/90 w-32 h-3 -rotate-45" +
+          "z-0 rounded fixed bg-special-red/90 md:w-32 w-28 md:h-3 h-2 -rotate-45" +
           classToAdd
         }
       ></div>
       <div
         className={
-          "z-10 rounded fixed bg-special-red/90 w-32 h-3 rotate-45" +
+          "z-10 rounded fixed bg-special-red/90 md:w-32 w-28 md:h-3 h-2 rotate-45" +
           classToAdd
         }
       ></div>

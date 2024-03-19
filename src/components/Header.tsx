@@ -38,7 +38,7 @@ export default function Header({
   return (
     <header className="flex justify-center h-1/5">
       <div
-        className="self-end flex justify-between flex-nowrap bg-white-blue min-w-[500px]
+        className="self-end flex justify-between flex-nowrap bg-white-blue md:min-w-[500px]
           rounded-3xl p-2 text-xl shadow-md"
       >
         {Object.entries(playersInfo).map(
@@ -49,7 +49,7 @@ export default function Header({
             return (
               <div
                 key={playerId}
-                className={`flex justify-between items-center p-2 w-[14.75rem] rounded-3xl
+                className={`flex justify-between items-center p-2 md:w-[14.75rem] w-44 rounded-3xl
                 bg-light-blue text-special-black font-medium${
                   isCurrentPlayer ? ' rainbow-border' : ''
                 }`}
