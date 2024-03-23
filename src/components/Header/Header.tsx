@@ -1,6 +1,6 @@
 import { O_PLAY, PlayerMap, X_PLAY } from '@/utils/helper';
 import { useState } from 'react';
-import TextInput from './TextInput';
+import TextInput from '../TextInput/TextInput';
 
 interface HeaderProps {
   playersInfo: PlayerMap;

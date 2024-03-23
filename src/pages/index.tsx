@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Board from '@/components/Board';
+
 import {
   O_PLAY,
   PlayerMap,
@@ -8,9 +8,11 @@ import {
   deepCopy,
   winningCombinations
 } from '@/utils/helper';
-import Result from '@/components/Result';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+
+import Board from '@/components/Board/Board';
+import Result from '@/components/Result/Result';
+import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
 
 export default function TicTacToe() {
   const [playHistory, setPlayHistory] = useState<Array<PlayerTurn>>(

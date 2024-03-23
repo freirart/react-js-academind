@@ -1,7 +1,7 @@
 import React from 'react';
 import { O_PLAY, X_PLAY } from '@/utils/helper';
-import OSign from './OSign';
-import XSign from './XSign';
+import OSign from '../OSign/OSign';
+import XSign from '../XSign/XSign';
 
 interface PlayButtonProps {
   optionPlayed: string | null;
