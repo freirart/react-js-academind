@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "pt": "npx prettier . --write",
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.9.0",
