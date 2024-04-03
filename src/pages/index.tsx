@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import {
+  INITIAL_PLAYERS_STATE,
   O_PLAY,
   PlayerMap,
   PlayerTurn,
@@ -33,10 +34,9 @@ export default function TicTacToe() {
   const [playHistory, setPlayHistory] = useState<Array<PlayerTurn>>(
     []
   );
-  const [playersInfo, setPlayersInfo] = useState<PlayerMap>({
-    [X_PLAY]: { score: 0, name: 'Player 1', winner: undefined },
-    [O_PLAY]: { score: 0, name: 'Player 2', winner: undefined }
-  });
+  const [playersInfo, setPlayersInfo] = useState(
+    INITIAL_PLAYERS_STATE
+  );
 
   const handleClickCbFn = (x: number, y: number) => {
     setPlayHistory((prevPlayHistory) => [

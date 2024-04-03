@@ -66,3 +66,8 @@ export const winningCombinations = [
     { x: 2, y: 0 }
   ]
 ];
+
+export const INITIAL_PLAYERS_STATE: PlayerMap = {
+  [X_PLAY]: { score: 0, name: 'Player 1', winner: undefined },
+  [O_PLAY]: { score: 0, name: 'Player 2', winner: undefined }
+};
