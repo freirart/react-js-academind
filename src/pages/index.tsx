@@ -14,6 +14,21 @@ import Result from '@/components/Result/Result';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 
+const getCurrentPlayer = (playHistory: Array<PlayerTurn>) =>
+  !playHistory.length || playHistory[0].player === O_PLAY
+    ? X_PLAY
+    : O_PLAY;
+
+const getPlayersReset = (prevPlayersInfo: PlayerMap, val?: null) => {
+  const newPlayersInfo: PlayerMap = deepCopy(prevPlayersInfo);
+
+  for (const playerId in newPlayersInfo) {
+    newPlayersInfo[playerId].winner = val;
+  }
+
+  return newPlayersInfo;
+};
+
 export default function TicTacToe() {
   const [playHistory, setPlayHistory] = useState<Array<PlayerTurn>>(
     []
@@ -22,12 +37,6 @@ export default function TicTacToe() {
     [X_PLAY]: { score: 0, name: 'Player 1', winner: undefined },
     [O_PLAY]: { score: 0, name: 'Player 2', winner: undefined }
   });
-
-  const getCurrentPlayer = (customPlayHistory = playHistory) =>
-    !customPlayHistory.length ||
-    customPlayHistory[0].player === O_PLAY
-      ? X_PLAY
-      : O_PLAY;
 
   const handleClickCbFn = (x: number, y: number) => {
     setPlayHistory((prevPlayHistory) => [
@@ -72,28 +81,15 @@ export default function TicTacToe() {
 
       if (!hasResult && playHistory.length === 9) {
         setPlayersInfo((prevPlayersInfo) =>
-          resetWinnerState(prevPlayersInfo, null)
+          getPlayersReset(prevPlayersInfo, null)
         );
       }
     }
   }, [playHistory]);
 
-  const resetWinnerState = (
-    prevPlayersInfo: PlayerMap,
-    val?: null
-  ) => {
-    const newPlayersInfo: PlayerMap = deepCopy(prevPlayersInfo);
-
-    for (const playerId in newPlayersInfo) {
-      newPlayersInfo[playerId].winner = val;
-    }
-
-    return newPlayersInfo;
-  };
-
   const restartCbFn = () => {
     setPlayHistory([]);
-    setPlayersInfo(resetWinnerState);
+    setPlayersInfo(getPlayersReset);
   };
 
   const setPlayerName = (playerId: string, newName: string) => {
@@ -112,7 +108,7 @@ export default function TicTacToe() {
         <Header
           playersInfo={playersInfo}
           setPlayerName={setPlayerName}
-          currentPlayer={getCurrentPlayer()}
+          currentPlayer={getCurrentPlayer(playHistory)}
         />
         <Board
           playHistory={playHistory}
