@@ -103,8 +103,8 @@ export default function TicTacToe() {
     <>
       <Result playersInfo={playersInfo} restartCbFn={restartCbFn} />
       <div
-        className="flex flex-col relative justify-center z-0 min-h-screen bg-light-blue
-          overflow-hidden"
+        className="flex flex-col relative justify-center md:justify-normal z-0 h-screen
+          bg-light-blue overflow-hidden"
       >
         <Header
           playersInfo={playersInfo}
