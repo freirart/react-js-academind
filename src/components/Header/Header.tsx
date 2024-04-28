@@ -25,8 +25,14 @@ export default function Header({
     ),
     [X_PLAY]: (
       <div className="w-8 h-2">
-        <div className="z-0 rounded fixed bg-special-red/90 md:w-10 w-8 md:h-2 h-1 -rotate-45"></div>
-        <div className="z-10 rounded fixed bg-special-red/90 md:w-10 w-8 md:h-2 h-1 rotate-45"></div>
+        <div
+          className="z-0 rounded absolute bg-special-red/90 md:w-10 w-8 md:h-2 h-1
+            -rotate-45"
+        ></div>
+        <div
+          className="z-10 rounded absolute bg-special-red/90 md:w-10 w-8 md:h-2 h-1
+            rotate-45"
+        ></div>
       </div>
     )
   };
@@ -39,10 +45,10 @@ export default function Header({
   };
 
   return (
-    <header className="flex justify-center h-1/5">
+    <header className="flex justify-center md:pt-10">
       <div
-        className="self-end flex justify-between flex-nowrap bg-white-blue
-          md:min-w-[500px] w-[350px] rounded-3xl p-2 md:text-xl shadow-md"
+        className="flex justify-between flex-nowrap bg-white-blue md:min-w-[500px]
+          w-[350px] rounded-3xl p-2 md:text-xl shadow-md"
       >
         {Object.entries(playersInfo).map(
           ([playerId, { name, score }]) => {
