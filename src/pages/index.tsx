@@ -31,9 +31,7 @@ const getPlayersReset = (prevPlayersInfo: PlayerMap, val?: null) => {
 };
 
 export default function TicTacToe() {
-  const [playHistory, setPlayHistory] = useState<Array<PlayerTurn>>(
-    []
-  );
+  const [playHistory, setPlayHistory] = useState<PlayerTurn[]>([]);
   const [playersInfo, setPlayersInfo] = useState(
     INITIAL_PLAYERS_STATE
   );

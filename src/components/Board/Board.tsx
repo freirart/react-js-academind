@@ -8,15 +8,15 @@ const initialBoardState = [
 ];
 
 interface BoardProps {
-  playHistory?: PlayerTurn[];
+  playHistory: PlayerTurn[];
   handleClickCbFn: Function;
 }
 
 export default function Board({
-  playHistory = [],
+  playHistory,
   handleClickCbFn
 }: BoardProps) {
-  const updatedBoard: Array<Array<string | null>> =
+  const updatedBoard: (string | null)[][] =
     deepCopy(initialBoardState);
 
   for (const { player, x, y } of playHistory) {
