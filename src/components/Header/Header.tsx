@@ -18,12 +18,15 @@ export default function Header({
 
   const signMap: Record<string, React.JSX.Element> = {
     [O_PLAY]: (
-      <div className="w-8 h-8 bg-transparent border-[6px] border-dark-blue/90 rounded-full"></div>
+      <div
+        className="md:w-8 w-6 md:h-8 h-6 bg-transparent border-[4px] md:border-[6px]
+          border-dark-blue/90 rounded-full"
+      ></div>
     ),
     [X_PLAY]: (
       <div className="w-8 h-2">
-        <div className="z-0 rounded fixed bg-special-red/90 w-10 h-2 -rotate-45"></div>
-        <div className="z-10 rounded fixed bg-special-red/90 w-10 h-2 rotate-45"></div>
+        <div className="z-0 rounded fixed bg-special-red/90 md:w-10 w-8 md:h-2 h-1 -rotate-45"></div>
+        <div className="z-10 rounded fixed bg-special-red/90 md:w-10 w-8 md:h-2 h-1 rotate-45"></div>
       </div>
     )
   };
@@ -39,7 +42,7 @@ export default function Header({
     <header className="flex justify-center h-1/5">
       <div
         className="self-end flex justify-between flex-nowrap bg-white-blue
-          md:min-w-[500px] rounded-3xl p-2 text-xl shadow-md"
+          md:min-w-[500px] w-[350px] rounded-3xl p-2 md:text-xl shadow-md"
       >
         {Object.entries(playersInfo).map(
           ([playerId, { name, score }]) => {
@@ -49,7 +52,7 @@ export default function Header({
             return (
               <div
                 key={playerId}
-                className={`flex justify-between items-center p-2 md:w-[14.75rem] w-44 rounded-3xl
+                className={`flex justify-between items-center p-2 md:w-[14.75rem] w-40 rounded-3xl
                 bg-light-blue text-special-black font-medium${
                   isCurrentPlayer ? ' rainbow-border' : ''
                 }`}
@@ -66,7 +69,7 @@ export default function Header({
                     {name}
                   </span>
                 )}
-                <span className="font-bold text-white-blue text-2xl">
+                <span className="font-bold text-white-blue text-lg md:text-2xl">
                   {score}
                 </span>
               </div>

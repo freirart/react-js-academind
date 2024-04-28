@@ -17,7 +17,7 @@ export default function TextInput({
       onBlur={() => onBlur(inputValue)}
       onKeyDown={(e) => (e.key === 'Enter' ? onBlur(inputValue) : {})}
       type="text"
-      className="md:w-36 w-28 text-center bg-light-blue"
+      className="md:w-36 w-24 text-center bg-light-blue"
       value={inputValue}
       onChange={(e) => setInputValue(e.target.value)}
     />

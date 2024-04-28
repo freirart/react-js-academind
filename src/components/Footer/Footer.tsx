@@ -10,8 +10,8 @@ export default function Footer({
   playHistory
 }: FooterProps) {
   return (
-    <footer className="flex h-1/5 mx-auto w-3/5">
-      <div className="mx-auto font-medium text-xl leading-9">
+    <footer className="text-center pt-5">
+      <div className="mx-auto font-medium md:text-xl leading-7 md:leading-9">
         <ul>
           {playHistory.map((p, index) => {
             const opacity = (100 - 20 * index) / 100;
