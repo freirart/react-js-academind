@@ -5,14 +5,14 @@ import XSign from '../XSign/XSign';
 
 interface PlayButtonProps {
   optionPlayed: string | null;
-  handleClickCbFn: Function;
+  handlePlayButtonClickCbFn: Function;
   x: number;
   y: number;
 }
 
 export default function PlayButton({
   optionPlayed,
-  handleClickCbFn,
+  handlePlayButtonClickCbFn,
   x,
   y
 }: PlayButtonProps) {
@@ -24,7 +24,7 @@ export default function PlayButton({
   return (
     <button
       disabled={!!optionPlayed}
-      onClick={() => handleClickCbFn(x, y)}
+      onClick={() => handlePlayButtonClickCbFn(x, y)}
       className="flex items-center justify-center w-full hover:bg-light-blue/15"
     >
       {(optionPlayed !== null && optionsMap[optionPlayed]) || (

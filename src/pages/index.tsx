@@ -35,12 +35,25 @@ export default function TicTacToe() {
   const [playersInfo, setPlayersInfo] = useState(
     INITIAL_PLAYERS_STATE
   );
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const handleClickCbFn = (x: number, y: number) => {
+  useEffect(
+    () =>
+      setIsDarkMode(localStorage.getItem('isDarkMode') === 'true'),
+    []
+  );
+
+  const handlePlayButtonClickCbFn = (x: number, y: number) => {
     setPlayHistory((prevPlayHistory) => [
       { x, y, player: getCurrentPlayer(prevPlayHistory) },
       ...prevPlayHistory
     ]);
+  };
+
+  const handleSwitchColorModeButtonClickCbFn = () => {
+    localStorage.setItem('isDarkMode', String(!isDarkMode));
+
+    setIsDarkMode((prevVal) => !prevVal);
   };
 
   useEffect(() => {
@@ -100,7 +113,7 @@ export default function TicTacToe() {
   };
 
   return (
-    <div className="">
+    <div className={isDarkMode === true ? 'dark' : ''}>
       <Result playersInfo={playersInfo} restartCbFn={restartCbFn} />
       <div
         className="flex flex-col relative justify-center md:justify-normal z-0 h-screen
@@ -113,10 +126,17 @@ export default function TicTacToe() {
         />
         <Board
           playHistory={playHistory}
-          handleClickCbFn={handleClickCbFn}
+          handlePlayButtonClickCbFn={handlePlayButtonClickCbFn}
         />
         <Footer playHistory={playHistory} playersInfo={playersInfo} />
       </div>
+      <button
+        onClick={() => handleSwitchColorModeButtonClickCbFn()}
+        className="absolute bottom-8 right-8 w-8 h-8 rounded-full dark:bg-white-blue
+          dark:text-special-black bg-special-black text-white-blue"
+      >
+        {isDarkMode ? '🌞' : '🌙'}
+      </button>
     </div>
   );
 }

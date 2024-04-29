@@ -9,12 +9,12 @@ const initialBoardState = [
 
 interface BoardProps {
   playHistory: PlayerTurn[];
-  handleClickCbFn: Function;
+  handlePlayButtonClickCbFn: Function;
 }
 
 export default function Board({
   playHistory,
-  handleClickCbFn
+  handlePlayButtonClickCbFn
 }: BoardProps) {
   const updatedBoard: (string | null)[][] =
     deepCopy(initialBoardState);
@@ -43,7 +43,7 @@ export default function Board({
                 x={rowIndex}
                 y={colIndex}
                 optionPlayed={col}
-                handleClickCbFn={handleClickCbFn}
+                handlePlayButtonClickCbFn={handlePlayButtonClickCbFn}
               />
             ))}
           </div>
