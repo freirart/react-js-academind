@@ -73,7 +73,7 @@ export default function Header({
                   <span
                     onClick={() => setPlayerBeingEdited(playerId)}
                     onBlur={() => onBlur()}
-                    className="hover:text-special-black/30"
+                    className="hover:text-special-black/30 dark:hover:text-light-blue/30"
                   >
                     {name}
                   </span>
