@@ -14,6 +14,7 @@ import Board from '@/components/Board/Board';
 import Result from '@/components/Result/Result';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
+import ColorModeSwitch from '@/components/ColorModeSwitch/ColorModeSwitch';
 
 const getCurrentPlayer = (playHistory: Array<PlayerTurn>) =>
   !playHistory.length || playHistory[0].player === O_PLAY
@@ -113,7 +114,7 @@ export default function TicTacToe() {
   };
 
   return (
-    <div className={isDarkMode === true ? 'dark' : ''}>
+    <div className={isDarkMode ? 'dark' : ''}>
       <Result playersInfo={playersInfo} restartCbFn={restartCbFn} />
       <div
         className="flex flex-col relative justify-center md:justify-normal z-0 h-screen
@@ -130,13 +131,10 @@ export default function TicTacToe() {
         />
         <Footer playHistory={playHistory} playersInfo={playersInfo} />
       </div>
-      <button
-        onClick={() => handleSwitchColorModeButtonClickCbFn()}
-        className="absolute bottom-8 right-8 w-8 h-8 rounded-full dark:bg-white-blue
-          dark:text-special-black bg-special-black text-white-blue"
-      >
-        {isDarkMode ? '🌞' : '🌙'}
-      </button>
+      <ColorModeSwitch
+        isDarkMode={isDarkMode}
+        onToggle={handleSwitchColorModeButtonClickCbFn}
+      />
     </div>
   );
 }
