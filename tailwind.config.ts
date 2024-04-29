@@ -17,7 +17,7 @@ const config: Config = {
     }
   },
   plugins: [
-    function ({ addUtilities }) {
+    function ({ addUtilities }: { addUtilities: Function }) {
       const newUtilities = {
         '.rainbow-border': {
           animation: 'spin 2.5s infinite linear',
