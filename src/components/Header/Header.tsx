@@ -47,8 +47,8 @@ export default function Header({
   return (
     <header className="flex justify-center md:pt-10">
       <div
-        className="flex justify-between flex-nowrap bg-white-blue md:min-w-[500px]
-          w-[350px] rounded-3xl p-2 md:text-xl shadow-md"
+        className="flex justify-between flex-nowrap dark:bg-dark-blue bg-white-blue
+          md:min-w-[500px] w-[350px] rounded-3xl p-2 md:text-xl shadow-md"
       >
         {Object.entries(playersInfo).map(
           ([playerId, { name, score }]) => {
@@ -59,8 +59,11 @@ export default function Header({
               <div
                 key={playerId}
                 className={`flex justify-between items-center p-2 md:w-[14.75rem] w-40 rounded-3xl
-                bg-light-blue text-special-black font-medium${
-                  isCurrentPlayer ? ' rainbow-border' : ''
+                dark:bg-special-black bg-light-blue dark:text-white-blue
+                text-special-black font-medium${
+                  isCurrentPlayer
+                    ? ' rainbow-border dark:dark-rainbow-border'
+                    : ''
                 }`}
               >
                 {signMap[playerId]}

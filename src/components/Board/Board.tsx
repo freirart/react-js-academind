@@ -26,14 +26,16 @@ export default function Board({
   return (
     <main className="flex mx-auto pt-6">
       <div
-        className="flex flex-col bg-white-blue md:h-[500px] h-[350px] md:w-[500px]
-          w-[350px] m-auto md:rounded-3xl rounded-xl md:p-10 md:divide-y-4
-          divide-y-2 divide-light-blue/75 shadow-lg"
+        className="flex flex-col dark:bg-dark-blue bg-white-blue md:h-[500px] h-[350px]
+          md:w-[500px] w-[350px] m-auto md:rounded-3xl rounded-xl md:p-10
+          md:divide-y-4 divide-y-2 divide-light-blue/75
+          dark:divide-special-black/75 shadow-lg"
       >
         {updatedBoard.map((row, rowIndex) => (
           <div
             key={rowIndex}
-            className="flex grow flex-nowrap md:divide-x-4 divide-x-2 divide-light-blue/75"
+            className="flex grow flex-nowrap md:divide-x-4 divide-x-2 divide-light-blue/75
+              dark:divide-special-black/75"
           >
             {row.map((col, colIndex) => (
               <PlayButton

@@ -11,7 +11,10 @@ export default function Footer({
 }: FooterProps) {
   return (
     <footer className="min-h-[128px] w-screen self-end text-center pt-5 max-h-[128px]">
-      <div className="bg-light-blue mx-auto font-medium md:text-xl leading-7 md:leading-9">
+      <div
+        className="bg-light-blue dark:bg-special-black mx-auto font-medium md:text-xl
+          leading-7 md:leading-9"
+      >
         <ul>
           {playHistory.map((p, index) => {
             const opacity = (100 - 20 * index) / 100;
@@ -20,7 +23,7 @@ export default function Footer({
               <li
                 key={index}
                 style={{ opacity }}
-                className="text-special-black"
+                className="text-special-black dark:text-white-blue"
               >
                 {playersInfo[p.player].name} jogou {p.x}, {p.y}
               </li>

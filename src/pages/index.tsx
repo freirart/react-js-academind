@@ -100,11 +100,11 @@ export default function TicTacToe() {
   };
 
   return (
-    <>
+    <div className="">
       <Result playersInfo={playersInfo} restartCbFn={restartCbFn} />
       <div
         className="flex flex-col relative justify-center md:justify-normal z-0 h-screen
-          bg-light-blue overflow-hidden"
+          bg-light-blue overflow-hidden dark:bg-special-black"
       >
         <Header
           playersInfo={playersInfo}
@@ -117,6 +117,6 @@ export default function TicTacToe() {
         />
         <Footer playHistory={playHistory} playersInfo={playersInfo} />
       </div>
-    </>
+    </div>
   );
 }

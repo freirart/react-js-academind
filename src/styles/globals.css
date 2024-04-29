@@ -6,6 +6,10 @@
 
 @tailwind utilities;
 
+* {
+  @apply transition-colors duration-200;
+}
+
 body {
   font-family: 'Montserrat';
 }
@@ -20,19 +24,4 @@ body {
   to {
     --bg-angle: 360deg;
   }
-}
-
-.rainbow-border {
-  animation: spin 2.5s infinite linear;
-
-  background:
-    linear-gradient(to bottom, #98c1d9, #98c1d9) padding-box,
-    /* ends at inner border edges */
-      conic-gradient(
-        from var(--bg-angle) in oklch longer hue,
-        oklch(0.85 0.37 0) 0 0
-      )
-      border-box;
-
-  border: 3px solid transparent;
 }
