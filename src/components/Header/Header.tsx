@@ -60,10 +60,10 @@ export default function Header({
                 key={playerId}
                 className={`flex justify-between items-center p-2 md:w-[14.75rem] w-40 rounded-3xl
                 dark:bg-special-black bg-light-blue dark:text-white-blue
-                text-special-black font-medium${
+                text-special-black font-medium transition-none${
                   isCurrentPlayer
                     ? ' rainbow-border dark:dark-rainbow-border'
-                    : ''
+                    : ' border-[3px] border-light-blue dark:border-special-black'
                 }`}
               >
                 {signMap[playerId]}
