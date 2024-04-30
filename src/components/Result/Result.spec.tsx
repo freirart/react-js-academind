@@ -33,7 +33,7 @@ describe('Result component', () => {
   });
 
   it('should display "EMPATE!" if both playersInfo "winner" key-value pair is null', () => {
-    const playersInfo: PlayerMap = deepCopy(INITIAL_PLAYERS_STATE);
+    const playersInfo = deepCopy(INITIAL_PLAYERS_STATE);
 
     playersInfo[X_PLAY].winner = null;
     playersInfo[O_PLAY].winner = null;
@@ -50,7 +50,7 @@ describe('Result component', () => {
   it.each([X_PLAY, O_PLAY])(
     `should display '"<player-name>" VENCEU!' when %p wins`,
     (winnerKey: string) => {
-      const playersInfo: PlayerMap = deepCopy(INITIAL_PLAYERS_STATE);
+      const playersInfo = deepCopy(INITIAL_PLAYERS_STATE);
 
       const winnerPlayer = playersInfo[winnerKey];
 

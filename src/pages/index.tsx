@@ -17,12 +17,12 @@ import Footer from '@/components/Footer/Footer';
 import ColorModeSwitch from '@/components/ColorModeSwitch/ColorModeSwitch';
 
 const getCurrentPlayer = (playHistory: Array<PlayerTurn>) =>
-  !playHistory.length || playHistory[0].player === O_PLAY
+  !playHistory.length || playHistory[0].playerId === O_PLAY
     ? X_PLAY
     : O_PLAY;
 
 const getPlayersReset = (prevPlayersInfo: PlayerMap, val?: null) => {
-  const newPlayersInfo: PlayerMap = deepCopy(prevPlayersInfo);
+  const newPlayersInfo = deepCopy(prevPlayersInfo);
 
   for (const playerId in newPlayersInfo) {
     newPlayersInfo[playerId].winner = val;
@@ -46,7 +46,7 @@ export default function TicTacToe() {
 
   const handlePlayButtonClickCbFn = (x: number, y: number) => {
     setPlayHistory((prevPlayHistory) => [
-      { x, y, player: getCurrentPlayer(prevPlayHistory) },
+      { x, y, playerId: getCurrentPlayer(prevPlayHistory) },
       ...prevPlayHistory
     ]);
   };
@@ -60,9 +60,9 @@ export default function TicTacToe() {
   useEffect(() => {
     if (playHistory.length >= 4) {
       let hasResult = false;
-      const lastPlayer = playHistory[0].player;
+      const lastPlayerId = playHistory[0].playerId;
       const plays = playHistory.filter(
-        (p) => p.player === lastPlayer
+        (p) => p.playerId === lastPlayerId
       );
 
       for (const combination of winningCombinations) {
@@ -82,8 +82,8 @@ export default function TicTacToe() {
           hasResult = true;
           setPlayersInfo((prevPlayersInfo) => {
             const newPlayersInfo = deepCopy(prevPlayersInfo);
-            newPlayersInfo[lastPlayer].score += 1;
-            newPlayersInfo[lastPlayer].winner = true;
+            newPlayersInfo[lastPlayerId].score += 1;
+            newPlayersInfo[lastPlayerId].winner = true;
 
             return newPlayersInfo;
           });

@@ -25,7 +25,7 @@ export default function Footer({
                 style={{ opacity }}
                 className="text-special-black dark:text-white-blue"
               >
-                {playersInfo[p.player].name} jogou {p.x}, {p.y}
+                {playersInfo[p.playerId].name} jogou {p.x}, {p.y}
               </li>
             );
           })}

@@ -6,7 +6,7 @@ export interface SignProps {
 }
 
 export interface PlayerTurn {
-  player: string;
+  playerId: string;
   x: number;
   y: number;
 }
@@ -19,7 +19,9 @@ interface PlayerInfo {
 
 export type PlayerMap = Record<string, PlayerInfo>;
 
-export const deepCopy = (val: any) => JSON.parse(JSON.stringify(val));
+export function deepCopy<T>(val: T): T {
+  return JSON.parse(JSON.stringify(val));
+}
 
 export const winningCombinations = [
   // wins on horizontal line

@@ -19,8 +19,8 @@ export default function Board({
   const updatedBoard: (string | null)[][] =
     deepCopy(initialBoardState);
 
-  for (const { player, x, y } of playHistory) {
-    updatedBoard[x][y] = player;
+  for (const { playerId, x, y } of playHistory) {
+    updatedBoard[x][y] = playerId;
   }
 
   return (
