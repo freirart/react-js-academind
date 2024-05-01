@@ -24,12 +24,11 @@ export default function Board({
   }
 
   return (
-    <main className="flex mx-auto pt-6">
+    <main className="flex justify-center items-center">
       <div
         className="flex flex-col dark:bg-dark-blue bg-white-blue md:h-[500px] h-[350px]
-          md:w-[500px] w-[350px] m-auto md:rounded-3xl rounded-xl md:p-10
-          md:divide-y-4 divide-y-2 divide-light-blue/75
-          dark:divide-special-black/75 shadow-lg"
+          md:w-[500px] w-[350px] md:rounded-3xl rounded-xl md:p-5 md:divide-y-4
+          divide-y-2 divide-light-blue/75 dark:divide-special-black/75 shadow-lg"
       >
         {updatedBoard.map((row, rowIndex) => (
           <div
