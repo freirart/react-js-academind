@@ -45,7 +45,7 @@ export default function Header({
   };
 
   return (
-    <header className="flex justify-center md:pt-10">
+    <header className="flex flex-col justify-center items-center h-1/5">
       <div
         className="flex justify-between flex-nowrap dark:bg-dark-blue bg-white-blue
           md:min-w-[500px] w-[350px] rounded-3xl p-2 md:text-xl shadow-md"
@@ -68,7 +68,7 @@ export default function Header({
               >
                 {signMap[playerId]}
                 {isEditingPlayer ? (
-                  <TextInput defaultValue={name} onBlur={onBlur} />
+                  <TextInput onBlur={onBlur} defaultValue={name} />
                 ) : (
                   <span
                     onClick={() => setPlayerBeingEdited(playerId)}
