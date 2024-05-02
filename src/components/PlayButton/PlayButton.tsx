@@ -1,7 +1,6 @@
 import React from 'react';
 import { O_PLAY, X_PLAY } from '@/utils/helper';
 import OSign from '../OSign/OSign';
-import XSign from '../XSign/XSign';
 
 interface PlayButtonProps {
   optionPlayed: string | null;
@@ -18,7 +17,18 @@ export default function PlayButton({
 }: PlayButtonProps) {
   const optionsMap: Record<string, React.JSX.Element> = {
     [O_PLAY]: <OSign />,
-    [X_PLAY]: <XSign />
+    [X_PLAY]: (
+      <>
+        <div
+          className={`z-0 rounded absolute bg-special-red/90 md:w-32 w-28 md:h-3 h-2
+            -rotate-45`}
+        ></div>
+        <div
+          className={`z-10 rounded absolute bg-special-red/90 md:w-32 w-28 md:h-3 h-2
+            rotate-45`}
+        ></div>
+      </>
+    )
   };
 
   return (
