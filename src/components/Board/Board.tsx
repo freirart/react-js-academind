@@ -1,5 +1,5 @@
 import { PlayerTurn, deepCopy } from '@/utils/helper';
-import PlayButton from '../PlayButton/PlayButton';
+import PlayButton from './PlayButton/PlayButton';
 
 const initialBoardState = [
   [null, null, null],

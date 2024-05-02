@@ -1,5 +1,5 @@
 import { O_PLAY, PlayerMap, X_PLAY } from '@/utils/helper';
-import PlayerNameInputDisplay from '../PlayerNameInputDisplay/PlayerNameInputDisplay';
+import PlayerNameInputDisplay from './PlayerNameInputDisplay/PlayerNameInputDisplay';
 
 interface HeaderProps {
   playersInfo: PlayerMap;
