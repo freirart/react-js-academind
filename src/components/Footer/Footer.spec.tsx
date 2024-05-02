@@ -12,22 +12,22 @@ describe('TicTacToe Footer component', () => {
 
   const playHistory = [
     {
-      player: X_PLAY,
+      playerId: X_PLAY,
       x: 1,
       y: 1
     },
     {
-      player: O_PLAY,
+      playerId: O_PLAY,
       x: 0,
       y: 0
     },
     {
-      player: X_PLAY,
+      playerId: X_PLAY,
       x: 2,
       y: 1
     },
     {
-      player: O_PLAY,
+      playerId: O_PLAY,
       x: 0,
       y: 2
     }
