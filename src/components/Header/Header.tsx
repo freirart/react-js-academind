@@ -1,6 +1,5 @@
 import { O_PLAY, PlayerMap, X_PLAY } from '@/utils/helper';
-import { useState } from 'react';
-import TextInput from '../TextInput/TextInput';
+import PlayerNameInputDisplay from '../PlayerNameInputDisplay/PlayerNameInputDisplay';
 
 interface HeaderProps {
   playersInfo: PlayerMap;
@@ -13,9 +12,6 @@ export default function Header({
   setPlayerName,
   currentPlayer
 }: HeaderProps) {
-  const [playerBeingEdited, setPlayerBeingEdited] =
-    useState<string>();
-
   const signMap: Record<string, React.JSX.Element> = {
     [O_PLAY]: (
       <div
@@ -37,13 +33,6 @@ export default function Header({
     )
   };
 
-  const onBlur = (newPlayerName?: string) => {
-    if (newPlayerName !== undefined) {
-      setPlayerName(playerBeingEdited, newPlayerName);
-    }
-    setPlayerBeingEdited(undefined);
-  };
-
   return (
     <header className="flex flex-col justify-center items-center h-1/5">
       <div
@@ -51,8 +40,7 @@ export default function Header({
           md:min-w-[500px] w-[350px] rounded-3xl p-2 md:text-xl shadow-md"
       >
         {Object.entries(playersInfo).map(
-          ([playerId, { name, score }]) => {
-            const isEditingPlayer = playerBeingEdited == playerId;
+          ([playerId, { name: playerName, score }]) => {
             const isCurrentPlayer = currentPlayer === playerId;
 
             return (
@@ -67,17 +55,11 @@ export default function Header({
                 }`}
               >
                 {signMap[playerId]}
-                {isEditingPlayer ? (
-                  <TextInput onBlur={onBlur} defaultValue={name} />
-                ) : (
-                  <span
-                    onClick={() => setPlayerBeingEdited(playerId)}
-                    onBlur={() => onBlur()}
-                    className="hover:text-special-black/30 dark:hover:text-light-blue/30"
-                  >
-                    {name}
-                  </span>
-                )}
+                <PlayerNameInputDisplay
+                  playerName={playerName}
+                  playerId={playerId}
+                  setPlayerName={setPlayerName}
+                />
                 <span className="font-bold text-white-blue text-lg md:text-2xl">
                   {score}
                 </span>
