@@ -1,6 +1,13 @@
 import React from 'react';
 import { O_PLAY, X_PLAY } from '@/utils/helper';
-import OSign from '../OSign/OSign';
+
+function OSign({ invisible = false }: { invisible?: boolean }) {
+  const className =
+    `md:w-28 w-24 md:h-28 h-24 bg-transparent md:border-[12px] border-[10px] border-dark-blue/90 dark:border-light-blue/90
+  rounded-full` + (invisible ? ' invisible' : '');
+
+  return <div className={className}></div>;
+}
 
 interface PlayButtonProps {
   optionPlayed: string | null;
