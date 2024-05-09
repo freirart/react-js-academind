@@ -16,7 +16,7 @@ export default function Footer({
           leading-7 md:leading-9"
       >
         <ul>
-          {playHistory.map((p, index) => {
+          {playHistory.map(({ playerId, x, y }, index) => {
             const opacity = (100 - 20 * index) / 100;
 
             return (
@@ -25,7 +25,7 @@ export default function Footer({
                 style={{ opacity }}
                 className="text-special-black dark:text-white-blue"
               >
-                {playersInfo[p.playerId].name} jogou {p.x}, {p.y}
+                {playersInfo[playerId].name} jogou {x}, {y}
               </li>
             );
           })}
