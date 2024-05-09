@@ -12,8 +12,8 @@ export default function ColorModeSwitch({
   return (
     <div
       onClick={() => onToggle()}
-      className="flex absolute bottom-8 right-8 w-12 h-6 rounded-full
-        dark:bg-light-blue bg-special-black cursor-pointer"
+      className="absolute bottom-8 right-8 w-12 h-6 rounded-full dark:bg-light-blue
+        bg-special-black cursor-pointer"
     >
       <span
         className={
