@@ -14,8 +14,8 @@ export default function PlayerNameInputDisplay({
   const [isEditingName, setIsEditingName] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
-  const onBlur = (newPlayerName: string) => {
-    setPlayerName(playerId, newPlayerName);
+  const onBlur = () => {
+    setPlayerName(playerId, inputValue || playerName);
     setIsEditingName(false);
   };
 
@@ -24,10 +24,8 @@ export default function PlayerNameInputDisplay({
       {isEditingName ? (
         <input
           autoFocus
-          onBlur={() => onBlur(inputValue || playerName)}
-          onKeyDown={(e) =>
-            e.key === 'Enter' ? onBlur(inputValue) : {}
-          }
+          onBlur={() => onBlur()}
+          onKeyDown={(e) => (e.key === 'Enter' ? onBlur() : {})}
           type="text"
           className="md:w-36 w-24 text-center dark:bg-special-black bg-light-blue
             dark:text-white-blue"
