@@ -26,7 +26,6 @@ export default function PlayerNameInputDisplay({
     <>
       {isEditingName ? (
         <input
-          autoFocus
           onBlur={() => onBlur(inputValue || playerName)}
           onKeyDown={(e) =>
             e.key === 'Enter' ? onBlur(inputValue) : {}
