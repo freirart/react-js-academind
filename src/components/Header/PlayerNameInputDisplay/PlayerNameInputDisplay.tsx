@@ -11,22 +11,20 @@ export default function PlayerNameInputDisplay({
   playerId,
   setPlayerName
 }: PlayerNameInputDisplayProps) {
-  const [playerBeingEdited, setPlayerBeingEdited] =
-    useState<string>();
-  const [inputValue, setInputValue] = useState<string>('');
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [inputValue, setInputValue] = useState('');
 
-  const onBlur = (newPlayerName?: string) => {
+  const onBlur = (newPlayerName: string) => {
     if (newPlayerName !== undefined) {
-      setPlayerName(playerBeingEdited, newPlayerName);
+      setPlayerName(playerId, newPlayerName);
     }
-    setPlayerBeingEdited(undefined);
-  };
 
-  const isEditingPlayer = playerBeingEdited == playerId;
+    setIsEditingName(false);
+  };
 
   return (
     <>
-      {isEditingPlayer ? (
+      {isEditingName ? (
         <input
           autoFocus
           onBlur={() => onBlur(inputValue || playerName)}
@@ -41,8 +39,7 @@ export default function PlayerNameInputDisplay({
         />
       ) : (
         <span
-          onClick={() => setPlayerBeingEdited(playerId)}
-          onBlur={() => onBlur()}
+          onClick={() => setIsEditingName(true)}
           className="hover:text-special-black/30 dark:hover:text-light-blue/30"
         >
           {playerName}
