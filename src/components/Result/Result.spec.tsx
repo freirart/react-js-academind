@@ -6,8 +6,7 @@ import {
   X_PLAY,
   O_PLAY,
   INITIAL_PLAYERS_STATE,
-  deepCopy,
-  PlayerMap
+  deepCopy
 } from '../../utils/helper';
 
 describe('Result component', () => {
