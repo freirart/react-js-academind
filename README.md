@@ -1,6 +1,15 @@
-# Curso "React JS - The Complete Guide 2024" pela Academind
+# Tictactoe
 
-## Anotações 🗒
+Jogo da velha desenvolvido com o propósito de pôr em prática os conhecimentos obtidos sobre NextJS, TailwindCSS, e Typescript.
+
+Este repositório abrange o conteúdo presente nas 4 primeiras seções do curso 
+["React - The Complete Guide 2024"](https://www.udemy.com/course/react-the-complete-guide-incl-redux/):
+- Getting started;
+- Javascript refresher;
+- React essentials - Components, JSX, Props, State & More;
+- React essentials - Deep dive;
+
+### Anotações 🗒
 
 - importância semântica na hora do HTML
 
