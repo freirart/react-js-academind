@@ -1,0 +1,13 @@
+{
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": "latest",
+    "parser": "@typescript-eslint/parser"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    "@typescript-eslint",
+    "plugin:@next/next/recommended"
+  ]
+}
