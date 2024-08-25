@@ -1,15 +1,16 @@
 # Tictactoe
 
-Jogo da velha desenvolvido com o propósito de pôr em prática os conhecimentos obtidos sobre NextJS, TailwindCSS, e Typescript.
+Jogo da velha desenvolvido com o propósito de pôr em prática os conhecimentos obtidos sobre NextJS, TailwindCSS, Typescript, e Jest.
 
 O artigo dedicado a apresentar o processo de desenvolvimento do jogo pode ser encontrado [neste link](https://medium.com/@freirart/como-eu-constru%C3%AD-do-zero-um-jogo-para-plataformas-web-618589702a94)!
 
-Este repositório abrange o conteúdo presente nas 4 primeiras seções do curso 
+Este repositório abrange o conteúdo presente nas seguintes seções do curso 
 ["React - The Complete Guide 2024"](https://www.udemy.com/course/react-the-complete-guide-incl-redux/):
-- Getting started;
-- Javascript refresher;
-- React essentials - Components, JSX, Props, State & More;
-- React essentials - Deep dive;
+- Section 1: Getting started;
+- Section 2: Javascript refresher;
+- Section 3: React essentials - Components, JSX, Props, State & More;
+- Section 4: React essentials - Deep dive;
+- Section 29: Testing React Apps;
 
 ### Anotações 🗒
 
